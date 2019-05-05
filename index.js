@@ -29,13 +29,19 @@ delegetter.prototype.getter = function(prop, def = "") {
 };
 
 delegetter.prototype.setter = function(paths, value) {
-    let curValue;
+    let curValue,
+        idx = 0;
     const props = [];
     paths.reduce((init, acc) => {
         props.push(acc);
         curValue = this.getter(props);
         if (!curValue) {
-            curValue = Number.isInteger(props[props.length - 1]) ? [] : {};
+            console.log(paths[idx + 1]);
+            curValue =
+                Number.isInteger(props[props.length - 1]) ||
+                Number.isInteger(paths[idx + 1])
+                    ? []
+                    : {};
         }
 
         if (acc === paths[paths.length - 1]) {
@@ -43,6 +49,7 @@ delegetter.prototype.setter = function(paths, value) {
         }
 
         init[acc] = curValue;
+        idx++;
         return init[acc];
     }, this.objs);
 
