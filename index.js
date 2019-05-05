@@ -30,16 +30,21 @@ delegetter.prototype.getter = function(prop, def = "") {
 
 delegetter.prototype.setter = function(paths, value) {
     let curValue;
-    paths.forEach(prop => {
-        curValue = this.getter(prop);
-        if (curValue == null) {
-            curValue = Number.isInteger(prop) ? [] : {};
-            this.objs.prop = curValue;
+    const props = [];
+    paths.reduce((init, acc) => {
+        props.push(acc);
+        curValue = this.getter(props);
+        if (!curValue) {
+            curValue = Number.isInteger(props[props.length - 1]) ? [] : {};
         }
-    });
 
-    return paths.reduce((prev, acc) => {
-        prev = prev[acc];
-        return prev;
+        if (acc === paths[paths.length - 1]) {
+            curValue = value;
+        }
+
+        init[acc] = curValue;
+        return init[acc];
     }, this.objs);
+
+    return this.objs;
 };
