@@ -28,4 +28,18 @@ delegetter.prototype.getter = function(prop, def = "") {
         : value;
 };
 
-delegetter.prototype.setter = function(objs, paths, value) {};
+delegetter.prototype.setter = function(paths, value) {
+    let curValue;
+    paths.forEach(prop => {
+        curValue = this.getter(prop);
+        if (curValue == null) {
+            curValue = Number.isInteger(prop) ? [] : {};
+            this.objs.prop = curValue;
+        }
+    });
+
+    return paths.reduce((prev, acc) => {
+        prev = prev[acc];
+        return prev;
+    }, this.objs);
+};
