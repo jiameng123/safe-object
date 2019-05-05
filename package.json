@@ -1,0 +1,26 @@
+{
+  "name": "safe-object",
+  "version": "1.0.0",
+  "description": "安全的操作对象的get/set",
+  "main": "lib/index.js",
+  "keywords": [
+    "Object",
+    "ES6",
+    "es2015",
+    "getter",
+    "setter",
+    "object path"
+  ],
+  "repository": "https://github.com/jiameng123/safe-object.git",
+  "author": "jiam <386805508@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^6.1.4",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.2"
+  },
+  "scripts": {
+    "test": "mocha",
+    "build": "webpack --config ./webpack.config.js"
+  }
+}
