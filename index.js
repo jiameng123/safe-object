@@ -55,3 +55,6 @@ delegetter.prototype.setter = function(paths, value) {
 
     return this.objs;
 };
+
+
+module.exports = delegetter;
