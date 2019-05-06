@@ -1,6 +1,6 @@
 {
   "name": "safe-object",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Secure operation object get/set",
   "main": "lib/index.js",
   "keywords": [
@@ -12,6 +12,7 @@
     "object path"
   ],
   "repository": "https://github.com/jiameng123/safe-object.git",
+  "homepage": "https://github.com/jiameng123/safe-object",
   "author": "jiam <386805508@qq.com>",
   "license": "MIT",
   "devDependencies": {
