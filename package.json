@@ -16,6 +16,7 @@
   "license": "MIT",
   "devDependencies": {
     "mocha": "^6.1.4",
+    "should": "^13.2.3",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.2"
   },

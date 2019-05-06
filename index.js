@@ -2,12 +2,13 @@ function isArray(ary) {
     return Object.prototype.toString.call(ary).slice(8, -1) === "Array";
 }
 
-function delegetter(objs) {
-    if (!new.target) return new delegetter(objs);
+function safeObject(objs) {
+    if (!new.target) return new safeObject(objs);
     this.objs = objs;
 }
 
-delegetter.prototype.getter = function(prop, def = "") {
+safeObject.prototype.getter = function(prop, def = "") {
+    if (prop == null || !prop) return "";
     const isAry = isArray(prop);
     let value;
     if (isAry) {
@@ -28,14 +29,15 @@ delegetter.prototype.getter = function(prop, def = "") {
         : value;
 };
 
-delegetter.prototype.setter = function(paths, value) {
+safeObject.prototype.setter = function(paths, value) {
+    if (paths == null || !paths) return this.objs;
     let curValue,
         idx = 0;
     const props = [];
     paths.reduce((init, acc) => {
         props.push(acc);
         curValue = this.getter(props);
-        if (!curValue) {
+        if (typeof curValue !== "object") {
             console.log(paths[idx + 1]);
             curValue =
                 Number.isInteger(props[props.length - 1]) ||
@@ -56,5 +58,4 @@ delegetter.prototype.setter = function(paths, value) {
     return this.objs;
 };
 
-
-module.exports = delegetter;
+module.exports = safeObject;
