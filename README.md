@@ -5,12 +5,12 @@
 ## example
 
 ```
-yarn add safe-object
+yarn add safe-object2
 or
-npm install safe-object
+npm install safe-object2
 
-const delegetter = require("delegetter");
-const a = delegetter({ a: 11, b: { c: [1, 2] }, c: { d: { x: "", b: 1 } } });
+const safeObj2 = require("safe-object2");
+const a = safeObj2({ a: 11, b: { c: [1, 2] }, c: { d: { x: "", b: 1 } } });
  console.log(a.setter(["z", "zd", 0], 222));
 //{ a: 11, b: { c: [ 1, 2 ] },c: { d: { x: '', b: 1 } },z: { zd: [ 222 ] } }
 

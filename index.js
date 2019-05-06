@@ -2,12 +2,12 @@ function isArray(ary) {
     return Object.prototype.toString.call(ary).slice(8, -1) === "Array";
 }
 
-function safeObject(objs) {
-    if (!new.target) return new safeObject(objs);
+function safeObject2(objs) {
+    if (!new.target) return new safeObject2(objs);
     this.objs = objs;
 }
 
-safeObject.prototype.getter = function(prop, def = "") {
+safeObject2.prototype.getter = function(prop, def = "") {
     if (prop == null || !prop) return "";
     const isAry = isArray(prop);
     let value;
@@ -29,7 +29,7 @@ safeObject.prototype.getter = function(prop, def = "") {
         : value;
 };
 
-safeObject.prototype.setter = function(paths, value) {
+safeObject2.prototype.setter = function(paths, value) {
     if (paths == null || !paths) return this.objs;
     let curValue,
         idx = 0;
@@ -58,4 +58,4 @@ safeObject.prototype.setter = function(paths, value) {
     return this.objs;
 };
 
-module.exports = safeObject;
+module.exports = safeObject2;
