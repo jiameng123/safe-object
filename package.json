@@ -1,7 +1,7 @@
 {
   "name": "safe-object",
   "version": "1.0.0",
-  "description": "安全的操作对象的get/set",
+  "description": "Secure operation object get/set",
   "main": "lib/index.js",
   "keywords": [
     "Object",
