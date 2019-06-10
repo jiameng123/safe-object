@@ -32,4 +32,3 @@ const a = safeObj2({ a: 11, b: { c: [1, 2] }, c: { d: { x: "", b: 1 } } });
 
 1.不支持 Map,Set,WeakMap,WeakSet.
 
-2.没有完善的测试用例
