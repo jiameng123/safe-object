@@ -30,6 +30,10 @@ safeObject2.prototype.getter = function(prop, def = "") {
 };
 
 safeObject2.prototype.setter = function(paths, value) {
+    if (paths.includes('__proto__') || paths.includes('constructor') || paths.includes('prototype')) {
+        return false;
+    }
+
     if (paths == null || !paths) return this.objs;
     let curValue,
         idx = 0;
